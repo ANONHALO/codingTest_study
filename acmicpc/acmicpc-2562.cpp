@@ -14,5 +14,5 @@ int main(void){
 	}
 
 	cout<<max<<'\n'<<idx+1;
-	return 0;
-}
+	return 0; 
+} //test
