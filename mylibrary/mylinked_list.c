@@ -19,7 +19,7 @@ int LFirst(List * list,LData * data){
 	}
 };
 int LNext(List * list,LData * data){
-	if(list->cur==NULL) return false;
+	if(list->cur->pnext==NULL) return false;
 	else{
 		list->before=list->cur;
 		list->cur=list->cur->pnext;
@@ -39,9 +39,9 @@ LData LRemove(List * list){
 	Node * delNode=list->cur;
 	LData ret=list->cur->data;
 	list->before->pnext=list->cur->pnext;
-	free(delNode);
 	list->cur=list->before;
 	list->numofdata--;
+	free(delNode);
 	return ret;
 
 		

@@ -21,32 +21,40 @@ class student{
 	
 };
 
-bool compare(student a, student b){
-	if(a.hangul>b.hangul) return a.hangul>b.hangul;
-	else if(a.hangul==b.hangul&&a.english>
+bool compare(student &a, student &b){
+	if(a.hangul>b.hangul) return true;
+	else if (a.hangul<b.hangul) return false;
+	else {
+		if(a.english<b.english) return true;
+		else if(a.english>b.english) return false;
+		else{
+			if(a.math>b.math) return true;
+			else if(a.math<b.math) return false;
+			else{
+				if(a.name<b.name) return true;
+				else return false;
+			}
+		}
+	}
 	
-	return a.first<b.first;
 }
 int main(void){
 	
 	int n;
-	int age;
+	int hangul,english,math;
 	string name;
 	cin>>n;
-	
-	vector <pair<int,string>> students;
-	
-
+	vector <student> students;
 
 	for(int i=0;i<n;i++){
-		cin>>age>>name;
-		students.push_back(pair<int,string>(age,name));
+		cin>>name>>hangul>>english>>math;
+		students.push_back(student(name,hangul,english,math));	
 	}
 	
-	stable_sort(students.begin(),students.end(),compare);
+	sort(students.begin(),students.end(),compare);
 
 	for(int i=0;i<students.size();i++){
-		cout<<students[i].first<<' '<<students[i].second<<'\n';
+		cout<<students[i].name<<'\n';
 	}
 	return 0;
 }
